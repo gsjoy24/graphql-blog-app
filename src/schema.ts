@@ -16,7 +16,7 @@ export const typeDefs = `
     createdAt: String!
     posts: [Post]
     Profile: Profile
-    }
+  }
 
   type Profile {
     id: ID!
@@ -26,6 +26,19 @@ export const typeDefs = `
   }
 
   type Query {
-    books: [Book]
+    posts: [Post]
+    post(id: ID!): Post
+    users: [User]
+    user(id: ID!): User
+    profiles: [Profile]
+    profile(id: ID!): Profile
+  }
+
+  type Mutation {
+    signUp(
+      name : String!
+      email : String!
+      password : String!
+    ) : User
   }
 `;
