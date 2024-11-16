@@ -12,6 +12,7 @@
     "@apollo/server": "^4.11.2",
     "@types/node": "^22.9.0",
     "graphql": "^16.9.0",
+    "prisma": "^5.22.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.3"
   },
