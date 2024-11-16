@@ -43,3 +43,7 @@
 - Typescript
 - PostgreSQL
 - Prisma
+
+## Tip
+
+we need a empty tsconfig.json file to run this server

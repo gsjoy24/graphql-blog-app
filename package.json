@@ -1,0 +1,21 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gsjoy24/graphql-blog-app.git",
+  "author": "gjsoy24 <gour.joy24@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --watch './**/*.ts' --exec ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.2",
+    "@types/node": "^22.9.0",
+    "graphql": "^16.9.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
