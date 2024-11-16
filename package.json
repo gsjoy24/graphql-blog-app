@@ -6,7 +6,7 @@
   "author": "gjsoy24 <gour.joy24@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch './**/*.ts' --exec ts-node src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "migrate": "npx prisma migrate dev"
   },
   "dependencies": {
