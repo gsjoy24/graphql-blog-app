@@ -31,7 +31,7 @@ export const typeDefs = `
     users: [User]
     user(id: ID!): User
     profiles: [Profile]
-    profile(id: ID!): Profile
+    profile(userId: ID!): Profile
   }
 
   type Mutation {
