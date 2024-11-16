@@ -9,6 +9,7 @@ type TUser = {
 	name: string;
 	email: string;
 	password: string;
+	bio?: string;
 };
 
 export const resolvers = {
@@ -17,9 +18,18 @@ export const resolvers = {
 			return await prisma.user.findMany();
 		}
 	},
+	User: {
+		profile: async (parent: any, args: any, context: any) => {
+			return await prisma.profile.findFirst({
+				where: {
+					userId: parent.id
+				}
+			});
+		}
+	},
 	Mutation: {
 		signUp: async (parent: any, args: TUser, context: any) => {
-			const { name, email, password } = args;
+			const { name, email, password, bio } = args;
 
 			const userExists = await prisma.user.findFirst({
 				where: {
@@ -39,10 +49,18 @@ export const resolvers = {
 					password: hashedPassword
 				}
 			});
+
+			if (bio) {
+				await prisma.profile.create({
+					data: {
+						bio,
+						userId: newUser.id
+					}
+				});
+			}
 			const jwtPayload = { userId: newUser?.id, email: newUser?.email };
 
 			const token = createToken(jwtPayload);
-			console.log({ token });
 
 			return { token, user: newUser };
 		},

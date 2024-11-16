@@ -15,7 +15,7 @@ export const typeDefs = `
     email: String!
     createdAt: String!
     posts: [Post]
-    Profile: Profile
+    profile: Profile
   }
 
   type Profile {
@@ -39,6 +39,7 @@ export const typeDefs = `
       name : String!
       email : String!
       password : String!
+      bio : String
     ) : authResponse
 
     signIn (
