@@ -39,6 +39,11 @@ export const typeDefs = `
       name : String!
       email : String!
       password : String!
-    ) : User
+    ) : signUpResponse
+  }
+
+  type signUpResponse {
+    token: String
+    user: User
   }
 `;

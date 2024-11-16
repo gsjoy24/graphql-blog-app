@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
@@ -20,14 +21,21 @@ export const resolvers = {
 		signUp: async (parent: any, args: TUser, context: any) => {
 			const { name, email, password } = args;
 			const hashedPassword = await bcrypt.hash(password, 12);
-			const user = await prisma.user.create({
+			const newUser = await prisma.user.create({
 				data: {
 					name,
 					email,
 					password: hashedPassword
 				}
 			});
-			return user;
+			const jwtPayload = { userId: newUser?.id, email: newUser?.email };
+
+			const token = jwt.sign(jwtPayload, "vkuesnhaeiwofhaw98eruaw9n8rh2qcr8ejqa9hq9r8jhqp9e8hqn9ryh", {
+				expiresIn: "1d"
+			});
+			console.log({ token });
+
+			return { token, user: newUser };
 		}
 	}
 };
