@@ -6,10 +6,12 @@
   "author": "gjsoy24 <gour.joy24@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch './**/*.ts' --exec ts-node src/index.ts"
+    "dev": "nodemon --watch './**/*.ts' --exec ts-node src/index.ts",
+    "migrate": "npx prisma migrate dev"
   },
   "dependencies": {
     "@apollo/server": "^4.11.2",
+    "@prisma/client": "^5.22.0",
     "@types/node": "^22.9.0",
     "graphql": "^16.9.0",
     "prisma": "^5.22.0",
